@@ -1,0 +1,35 @@
+
+Para restaurar la información haremos lo siguiente.
+
+Vamos escribir el comando psql y luego enter.
+
+Welcome to psql 8.1.11, the PostgreSQL interactive terminal.
+
+Type:  \copyright for distribution terms
+\h for help with SQL commands
+\? for help with psql commands
+\g or terminate with semicolon to execute query
+\q to quit
+
+postgres=#
+
+hora ya estando dentro de postgres, voy a crear la base de datos con el siguiente comando:
+
+CREATE DATABASE web ENCODING ‘UTF8′;
+
+
+luego nos salimos de la consola de postgres con el siguiente comando:
+
+\q y presionamos enter.
+
+Ya estando de vuela en la consola de sistema, ejecutaremos el siguiente comando:
+
+psql web < bk_dbendesis_cobra.sql
+
+Con este comando importaremos el schema en la nueva base de datos.
+
+Ahora con el siguiente comando importaremos toda la data:
+
+pg_restore -a -v -e -Fc -O –-disable-triggers -d dbweb bk_dbendesis_cobra.data.dump
+
+Con este comando insertaremos toda la data en la nueva base de datos.
